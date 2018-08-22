@@ -33,7 +33,6 @@
     <dubbo:reference id="floorService" interface="com.xinchao.tech.xinchaoad.common.api.ssp.FloorService" version="1.0.0" check="false"/>
     <dubbo:reference id="tagInfoService" interface="com.xinchao.tech.xinchaoad.common.api.ssp.TagInfoService" version="1.0.0" check="false"/>
     <dubbo:reference id="unitService" interface="com.xinchao.tech.xinchaoad.common.api.ssp.UnitService" version="1.0.0"  check="false"/>
-    <dubbo:reference id="signDeviceInfoService" interface="com.xinchao.tech.xinchaoad.common.api.ssp.SignDeviceInfoService" version="1.0.0"  check="false"/>
 
 
 
