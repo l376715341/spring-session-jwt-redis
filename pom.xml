@@ -11,6 +11,7 @@
     <name>xinchao-web-ssp-start</name>
     <description>xinchao-web-ssp-start</description>
 
+	
     <parent>
         <groupId>com.xinchao.tech</groupId>
         <artifactId>xinchaoad-parent</artifactId>
