@@ -10,6 +10,8 @@
 
     <name>demo-web-ssp-start</name>
     <description>demo-web-ssp-start</description>
+
+	
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
