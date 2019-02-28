@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xinchao.tech.xinchaoad.config;
+package com.demo.tech.springsession.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -38,14 +38,7 @@ public class EmbeddedRedisConfig {
 	@Value("${spring.redis.password}")
 	private String password;
 
-//	@Bean
-//	public GenericContainer redisContainer() {
-//		GenericContainer redisContainer = new GenericContainer(DOCKER_IMAGE)
-//				.withExtraHost(hostName,host)
-//				.withExposedPorts(port);
-//		redisContainer.start();
-//		return redisContainer;
-//	}
+
 
 	@Bean
 	@Primary

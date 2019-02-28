@@ -1,15 +1,14 @@
-package com.xinchao.tech.xinchaoad.util;
+package com.demo.tech.springsession.util;
 
 import com.alibaba.fastjson.JSON;
-import com.xinchao.tech.xinchaoad.common.exception.BaseException;
-import com.xinchao.tech.xinchaoad.common.exception.ResultCode;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+@Slf4j
 public class JwtUtil {
     static final String SECRET = "ThisIsASecret";
 
@@ -34,12 +33,9 @@ public class JwtUtil {
                     .getBody();
             return body;
         }catch (Exception e){
-            throw new BaseException(ResultCode.FAIL_AUTH_FAIL.getCode(),"token错误："+token,e);
+            log.error("token error");
+            return null;
         }
     }
 
-    public static void main(String[] args) {
-       Map map= validateToken("Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1MzQyOTg0OTAsInVzZXJuYW1lIjoiYTFlOWY5YWQtMTRmZC00OTU4LTkzMWUtNTBjNmM4NmY1Y2YwIn0.cr6S2VmDsb3wclVYt1CDPMrlAeVW046fA3LcsgKf9ffjc44t9ktTmQ6chlf28NcoiB2RZU838iuJaVYlvUxRww");
-        System.out.println(JSON.toJSON(map).toString());
-    }
 }

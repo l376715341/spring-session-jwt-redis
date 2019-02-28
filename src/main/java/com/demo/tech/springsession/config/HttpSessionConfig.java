@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.xinchao.tech.xinchaoad.config;
+package com.demo.tech.springsession.config;
 
-import com.xinchao.tech.xinchaoad.session.XinchaoHeaderSessionIdResolver;
+import com.demo.tech.springsession.session.MyHeaderSessionIdResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,19 +39,14 @@ public class HttpSessionConfig {
     private int port;
     @Value("${session.headerName}")
     private String headerName;
-    @Value("${spring.redis.password}")
-    private String password;
 
-    //	@Bean
-//	public LettuceConnectionFactory connectionFactory() {
-//		return new LettuceConnectionFactory();
-//	}
+
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
         redisStandaloneConfiguration.setHostName(hostName);
         redisStandaloneConfiguration.setPort(port);
-        //redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
+        //redisStandaloneConfiguration.setPassword(RedisPassword.of(password));  这里我的redis 没有设置密码
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
     @Bean
@@ -63,7 +58,7 @@ public class HttpSessionConfig {
 
     @Bean
     public HttpSessionIdResolver httpSessionIdResolver() {
-        return new XinchaoHeaderSessionIdResolver(headerName);
+        return new MyHeaderSessionIdResolver(headerName);
     }
 
 }

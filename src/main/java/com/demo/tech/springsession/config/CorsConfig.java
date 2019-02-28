@@ -1,4 +1,4 @@
-package com.xinchao.tech.xinchaoad.config;
+package com.demo.tech.springsession.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +7,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
+/**
+ * 允许跨域
+ */
 public class CorsConfig {  
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();  

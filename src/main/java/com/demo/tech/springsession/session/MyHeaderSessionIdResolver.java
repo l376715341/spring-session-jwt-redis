@@ -1,6 +1,6 @@
-package com.xinchao.tech.xinchaoad.session;
+package com.demo.tech.springsession.session;
 
-import com.xinchao.tech.xinchaoad.util.JwtUtil;
+import com.demo.tech.springsession.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
@@ -13,29 +13,40 @@ import java.util.Map;
 
 /**
  * @author: luhanyu
+ *  HeaderHttpSessionIdResolver  重写 getSessionID   resolveSessionIds方法
  * @Date: 2018/7/4 17:18
  * @Description:
  */
 @Slf4j
-public class XinchaoHeaderSessionIdResolver extends HeaderHttpSessionIdResolver {
+public class MyHeaderSessionIdResolver extends HeaderHttpSessionIdResolver {
 
     @Value("${session.headerName}")
     private String  headerName;
     @Value("${session.tokenName}")
     private String tokenName;
-    @Value("${session.defaultToken}")
-    private String defaultToken;
-    @Override
-    public void setSessionId(HttpServletRequest request, HttpServletResponse response, String sessionId) {
-        //用于登录时重新分配sessionID
-        String authorization =JwtUtil.generateToken(sessionId);
-        super.setSessionId(request, response, authorization);
-    }
 
-    public XinchaoHeaderSessionIdResolver(String headerName) {
+//    /**
+//     * 重写 getSessionId
+//     * @param request
+//     * @param response
+//     * @param sessionId
+//     */
+//    @Override
+//    public void setSessionId(HttpServletRequest request, HttpServletResponse response, String sessionId) {
+//        //用于登录时重新分配sessionID
+//        String authorization =JwtUtil.generateToken(sessionId);
+//        super.setSessionId(request, response, authorization);
+//    }
+
+    public MyHeaderSessionIdResolver(String headerName) {
         super(headerName);
     }
 
+    /**
+     * 重写 resolveSessionIds 根据token 获取 session内容
+     * @param request
+     * @return
+     */
     @Override
     public List<String> resolveSessionIds(HttpServletRequest request) {
         String token  = request.getHeader(headerName);

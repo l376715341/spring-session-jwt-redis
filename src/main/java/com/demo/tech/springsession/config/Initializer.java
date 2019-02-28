@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xinchao.tech.xinchaoad.config;
+package com.demo.tech.springsession.config;
 
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
 
