@@ -33,10 +33,28 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 @EnableRedisHttpSession
 public class HttpSessionConfig {
 
+    @Value("${spring.redis.hostName}")
+    private String hostName;
+    @Value("${spring.redis.port}")
+    private int port;
     @Value("${session.headerName}")
     private String headerName;
 
 
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory() {
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+        redisStandaloneConfiguration.setHostName(hostName);
+        redisStandaloneConfiguration.setPort(port);
+        //redisStandaloneConfiguration.setPassword(RedisPassword.of(password));  这里我的redis 没有设置密码
+        return new JedisConnectionFactory(redisStandaloneConfiguration);
+    }
+    @Bean
+    public RedisTemplate<String,Object> redisConnection(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String,Object> redisTemplate=new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(connectionFactory);
+        return redisTemplate;
+    }
 
     @Bean
     public HttpSessionIdResolver httpSessionIdResolver() {

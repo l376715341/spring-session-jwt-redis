@@ -29,6 +29,7 @@ public class DemoController {
     @ResponseBody
     public String getToken(HttpServletRequest request){
         request.getSession().setAttribute("test","this is test msg");
+        request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 10); //可以直接设置 过期时间
         return JwtUtil.generateToken(request.getSession().getId());
     }
     /**
@@ -39,6 +40,7 @@ public class DemoController {
     @RequestMapping(value = "/getAttrbute", method = GET)
     @ResponseBody
     public Object getAttrbute(HttpServletRequest request){
+        //返回getToken 时 的Attribute
         return request.getSession().getAttribute("test");
     }
 }

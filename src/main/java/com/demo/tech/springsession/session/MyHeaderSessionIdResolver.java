@@ -25,18 +25,6 @@ public class MyHeaderSessionIdResolver extends HeaderHttpSessionIdResolver {
     @Value("${session.tokenName}")
     private String tokenName;
 
-//    /**
-//     * 重写 getSessionId
-//     * @param request
-//     * @param response
-//     * @param sessionId
-//     */
-//    @Override
-//    public void setSessionId(HttpServletRequest request, HttpServletResponse response, String sessionId) {
-//        //用于登录时重新分配sessionID
-//        String authorization =JwtUtil.generateToken(sessionId);
-//        super.setSessionId(request, response, authorization);
-//    }
 
     public MyHeaderSessionIdResolver(String headerName) {
         super(headerName);
