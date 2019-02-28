@@ -33,9 +33,9 @@ spring session redis  搭建 集成jwt
 主要的配置类,都是参考SpringSession 官网配置
 https://docs.spring.io/spring-session/docs/current/reference/html5/guides/java-redis.html
 
-EmbeddedRedisConfig  
-HttpSessionConfig 
-Initializer 
+EmbeddedRedisConfig.class
+HttpSessionConfig.class
+Initializer.class
 
 MyHeaderSessionIdResolver 继承 HeaderSessionIdResolver 重写 获取session的规则 主要就是  加入了jwt 解密
 
